@@ -21,8 +21,10 @@ pipeline {
 
     stage('Docker Image Build') {
       steps {
-        sh '''docker build -t omusiiaka/testrepo
+        sh '''docker build -t testrepo:latest
  .'''
+        sh ' docker tag testrepo   omusiiaka/testrepo:latest'
+        sh 'docker tag testrepo omusiiaka/testrepo:$BUILD_NUMBER'
       }
     }
 
