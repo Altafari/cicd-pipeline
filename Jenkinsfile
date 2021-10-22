@@ -21,7 +21,7 @@ pipeline {
 
     stage('Docker Image Build') {
       steps {
-        sh 'whoami'
+        sh 'docker build -t testappimage .'
       }
     }
 
