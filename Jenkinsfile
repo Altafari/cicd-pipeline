@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Git Checkout') {
       steps {
-        git(url: 'https://github.com/Altafari/cicd-pipeline.git', branch: 'main')
+        git 'https://github.com/Altafari/cicd-pipeline.git'
       }
     }
 
