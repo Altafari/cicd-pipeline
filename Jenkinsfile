@@ -21,9 +21,21 @@ pipeline {
 
     stage('Docker Image Build') {
       steps {
-        sh 'docker build -t testappimage .'
+        sh 'docker build -t testrepo .'
       }
     }
 
+    stage('Docker Image Publish') {
+      steps {
+        script {
+          withDockerRegistry([ credentialsId: "dockerHub", url: "" ])
+          {
+            sh  'docker push omusiiaka/testrepo:latest'
+            sh  'docker push omusiiaka/testrepo:$BUILD_NUMBER'}
+          }
+
+        }
+      }
+
+    }
   }
-}
